@@ -12,6 +12,6 @@ public class gameProject {
     
     public static void main(String[] args) {
         boolean gitTest=false;
-        int otherGitTest;
+        int otherGitTest=2;
     }
 }
