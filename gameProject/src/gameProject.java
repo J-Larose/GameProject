@@ -11,6 +11,7 @@
 public class gameProject {
     
     public static void main(String[] args) {
-        
+        String wordsArray[] = {""};
+                
     }
 }
