@@ -66,6 +66,4 @@ public class gameProject {
         }
         return lettersUnmixed;
     }
-    
-    
 }
