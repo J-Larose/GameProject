@@ -26,21 +26,101 @@ public class gameProjectGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        startMenu = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        start = new javax.swing.JButton();
+        difficulty = new javax.swing.JComboBox();
+        gameMenu = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        startMenu.setBackground(new java.awt.Color(34, 41, 253));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resource/titleLogo.png"))); // NOI18N
+
+        start.setForeground(new java.awt.Color(196, 41, 37));
+        start.setText("<html> <font size=\"25\">START</font></html>");
+        start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startActionPerformed(evt);
+            }
+        });
+
+        difficulty.setForeground(new java.awt.Color(196, 41, 37));
+        difficulty.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<html> <font size=\"20\">4-5 letters</font></html>" }));
+        difficulty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                difficultyActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout startMenuLayout = new javax.swing.GroupLayout(startMenu);
+        startMenu.setLayout(startMenuLayout);
+        startMenuLayout.setHorizontalGroup(
+            startMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, startMenuLayout.createSequentialGroup()
+                .addContainerGap(151, Short.MAX_VALUE)
+                .addComponent(difficulty, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63)
+                .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(174, 174, 174))
+            .addGroup(startMenuLayout.createSequentialGroup()
+                .addGap(207, 207, 207)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        startMenuLayout.setVerticalGroup(
+            startMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(startMenuLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
+                .addGap(97, 97, 97)
+                .addGroup(startMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(difficulty, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(145, Short.MAX_VALUE))
+        );
+
+        gameMenu.setVisible(false);
+        gameMenu.setBackground(new java.awt.Color(33, 97, 253));
+
+        javax.swing.GroupLayout gameMenuLayout = new javax.swing.GroupLayout(gameMenu);
+        gameMenu.setLayout(gameMenuLayout);
+        gameMenuLayout.setHorizontalGroup(
+            gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 763, Short.MAX_VALUE)
+        );
+        gameMenuLayout.setVerticalGroup(
+            gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 556, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(startMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(gameMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(startMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(gameMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void difficultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_difficultyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_difficultyActionPerformed
+
+    private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
+        startMenu.setVisible(false);
+        gameMenu.setVisible(true);
+    }//GEN-LAST:event_startActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,10 +153,16 @@ public class gameProjectGUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new gameProjectGUI().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox difficulty;
+    private javax.swing.JPanel gameMenu;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton start;
+    private javax.swing.JPanel startMenu;
     // End of variables declaration//GEN-END:variables
 }
