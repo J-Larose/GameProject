@@ -1,3 +1,6 @@
+
+import java.util.Random;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,17 +9,21 @@
 
 /**
  *
- * @author Administrator
+ * @author Jacob Larose
  */
 public class gameProjectGUI extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form gameProjectGUI
      */
     public gameProjectGUI() {
         initComponents();
     }
-
+    
+    char []lettersUnmixed;
+    boolean [] correct;
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,6 +38,12 @@ public class gameProjectGUI extends javax.swing.JFrame {
         start = new javax.swing.JButton();
         difficulty = new javax.swing.JComboBox();
         gameMenu = new javax.swing.JPanel();
+        wordMixed = new javax.swing.JLabel();
+        letter1 = new javax.swing.JButton();
+        letter2 = new javax.swing.JButton();
+        letter3 = new javax.swing.JButton();
+        letter4 = new javax.swing.JButton();
+        letter5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,15 +97,50 @@ public class gameProjectGUI extends javax.swing.JFrame {
         gameMenu.setVisible(false);
         gameMenu.setBackground(new java.awt.Color(33, 97, 253));
 
+        wordMixed.setFont(new java.awt.Font("Tekton Pro", 0, 48)); // NOI18N
+        wordMixed.setForeground(new java.awt.Color(255, 51, 51));
+
+        letter1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                letter1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout gameMenuLayout = new javax.swing.GroupLayout(gameMenu);
         gameMenu.setLayout(gameMenuLayout);
         gameMenuLayout.setHorizontalGroup(
             gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 763, Short.MAX_VALUE)
+            .addGroup(gameMenuLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(wordMixed, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(gameMenuLayout.createSequentialGroup()
+                        .addComponent(letter1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addComponent(letter2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81)
+                        .addComponent(letter3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(78, 78, 78)))
+                .addGap(5, 5, 5)
+                .addComponent(letter4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addComponent(letter5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83))
         );
         gameMenuLayout.setVerticalGroup(
             gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 556, Short.MAX_VALUE)
+            .addGroup(gameMenuLayout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(wordMixed, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(letter1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(letter2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(letter3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(letter5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(letter4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(125, 125, 125))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -120,8 +168,124 @@ public class gameProjectGUI extends javax.swing.JFrame {
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         startMenu.setVisible(false);
         gameMenu.setVisible(true);
+        
+        letter1.setVisible(false);
+        letter2.setVisible(false);
+        letter3.setVisible(false);
+        letter4.setVisible(false);
+        letter5.setVisible(false);
+        setup();
     }//GEN-LAST:event_startActionPerformed
 
+    private void letter1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_letter1ActionPerformed
+        if (letter1.getText() == null ? Character.toString(lettersUnmixed[0]) == null : letter1.getText().equals(Character.toString(lettersUnmixed[0]))){
+            
+        }
+    }//GEN-LAST:event_letter1ActionPerformed
+    
+    public void setup(){
+        String wordsArray[] = {"cars", "cats", "blue"};
+        int choice = -1;
+        choice = wordChoose(choice);
+        String word=wordsArray[choice];
+        System.out.println(word);
+        lettersUnmixed= wordSplit(word);
+        
+        // Implementing Fisher–Yates shuffle
+        char[] lettersMixed= shuffleLetters(lettersUnmixed);
+        for (int i=0; i<lettersMixed.length; i++){
+            System.out.println(lettersMixed[i]);
+        }
+        
+        //put mixed letter in display label 
+        for (int i=0; i<lettersMixed.length; i++){
+            wordMixed.setText(wordMixed.getText() + lettersMixed[i]);
+        }
+        
+        System.out.println(lettersMixed.length);
+        switch (lettersMixed.length){
+            case 3:
+                letter1.setVisible(true);
+                letter2.setVisible(true);
+                letter3.setVisible(true);
+                letter1.setText( Character.toString(lettersMixed[0]));
+                letter2.setText( Character.toString(lettersMixed[1]));
+                letter3.setText( Character.toString(lettersMixed[2]));
+                break;
+            case 4:
+                letter1.setVisible(true);
+                letter2.setVisible(true);
+                letter3.setVisible(true);
+                letter4.setVisible(true);
+                
+                letter1.setText( Character.toString(lettersMixed[0]));
+                letter2.setText( Character.toString(lettersMixed[1]));
+                letter3.setText( Character.toString(lettersMixed[2]));
+                letter4.setText( Character.toString(lettersMixed[3]));
+                break;
+            case 5:
+                letter1.setVisible(true);
+                letter2.setVisible(true);
+                letter3.setVisible(true);
+                letter4.setVisible(true);
+                letter5.setVisible(true);
+                
+                letter1.setText( Character.toString(lettersMixed[0]));
+                letter2.setText( Character.toString(lettersMixed[1]));
+                letter3.setText( Character.toString(lettersMixed[2]));
+                letter4.setText( Character.toString(lettersMixed[3]));
+                letter5.setText( Character.toString(lettersMixed[4]));
+                break;
+            default:
+                System.out.print("error");
+                break;
+        }
+        /**
+         * set all letters to incorect for initial
+         */
+        correct= new boolean[lettersMixed.length];
+        for (int i=0; i<lettersMixed.length; i++){
+            correct[i]=false;
+        } 
+        
+    }
+    /**
+     * 
+     * @param choice
+     * @return 
+     */
+    public static int wordChoose(int choice){
+        choice = (int) ((Math.random() * 3));
+        return choice;
+    }
+    
+    /**
+     * 
+     * @param word
+     * @return 
+     */
+    public static char[] wordSplit(String word ){
+        char[] lettersUnmixed= word.toCharArray();
+        return lettersUnmixed;
+    }
+    
+    /**
+     * 
+     * @param lettersUnmixed
+     * @return 
+     */
+    static char[] shuffleLetters(char[] lettersUnmixed) {
+        Random rnd = new Random();
+        for (int i = lettersUnmixed.length - 1; i > 0; i--) {
+            int index = rnd.nextInt(i + 1);
+            // Simple swap
+            char a = lettersUnmixed[index];
+            lettersUnmixed[index] = lettersUnmixed[i];
+            lettersUnmixed[i] = a;
+        }
+        return lettersUnmixed;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -148,7 +312,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(gameProjectGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -162,7 +326,13 @@ public class gameProjectGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox difficulty;
     private javax.swing.JPanel gameMenu;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton letter1;
+    private javax.swing.JButton letter2;
+    private javax.swing.JButton letter3;
+    private javax.swing.JButton letter4;
+    private javax.swing.JButton letter5;
     private javax.swing.JButton start;
     private javax.swing.JPanel startMenu;
+    private javax.swing.JLabel wordMixed;
     // End of variables declaration//GEN-END:variables
 }
