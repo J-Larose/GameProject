@@ -24,6 +24,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
     boolean [] correct;
     
     
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,6 +45,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
         letter3 = new javax.swing.JButton();
         letter4 = new javax.swing.JButton();
         letter5 = new javax.swing.JButton();
+        messages = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,6 +108,27 @@ public class gameProjectGUI extends javax.swing.JFrame {
             }
         });
 
+        letter2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                letter2ActionPerformed(evt);
+            }
+        });
+
+        letter3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                letter3ActionPerformed(evt);
+            }
+        });
+
+        letter4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                letter4ActionPerformed(evt);
+            }
+        });
+
+        messages.setFont(new java.awt.Font("Tekton Pro", 0, 24)); // NOI18N
+        messages.setForeground(new java.awt.Color(255, 51, 51));
+
         javax.swing.GroupLayout gameMenuLayout = new javax.swing.GroupLayout(gameMenu);
         gameMenu.setLayout(gameMenuLayout);
         gameMenuLayout.setHorizontalGroup(
@@ -126,19 +149,25 @@ public class gameProjectGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addComponent(letter5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(83, 83, 83))
+            .addGroup(gameMenuLayout.createSequentialGroup()
+                .addGap(326, 326, 326)
+                .addComponent(messages, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         gameMenuLayout.setVerticalGroup(
             gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gameMenuLayout.createSequentialGroup()
                 .addGap(67, 67, 67)
                 .addComponent(wordMixed, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(messages, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(letter1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(letter2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(letter3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(letter5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(letter5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(letter1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(letter4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(125, 125, 125))
         );
@@ -178,10 +207,73 @@ public class gameProjectGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_startActionPerformed
 
     private void letter1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_letter1ActionPerformed
-        if (letter1.getText() == null ? Character.toString(lettersUnmixed[0]) == null : letter1.getText().equals(Character.toString(lettersUnmixed[0]))){
-            
+        int i;
+        for (i=0; i<correct.length; i++){
+            if(correct[i]==false){
+                break;
+            }
+        }
+        System.out.println(i);
+        if (letter1.getText().equals(Character.toString(lettersUnmixed[i]))){
+            correct[i]=true;
+            System.out.println("corect");
+        }else{
+            correct[i]=false;
+            messages.setText("incorect");
+            System.out.println("incorect");
         }
     }//GEN-LAST:event_letter1ActionPerformed
+
+    private void letter2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_letter2ActionPerformed
+        int i;
+        for (i = 0; i < correct.length; i++) {
+            if (correct[i] == false) {
+                break;
+            }
+        }
+        if (letter2.getText().equals(Character.toString(lettersUnmixed[i]))) {
+            correct[i] = true;
+            System.out.println("corect");
+        } else {
+            correct[i] = false;
+            messages.setText("incorect");
+            System.out.println("incorect");
+        }
+    }//GEN-LAST:event_letter2ActionPerformed
+
+    private void letter3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_letter3ActionPerformed
+        int i;
+        for (i=0; i<correct.length; i++){
+            if(correct[i]==false){
+                break;
+            }
+        } 
+        if (letter3.getText().equals(Character.toString(lettersUnmixed[i]))){
+            correct[i]=true;
+            System.out.println("corect");
+        }else{
+            correct[i]=false;
+            messages.setText("incorect");
+            System.out.println("incorect");
+        }
+    }//GEN-LAST:event_letter3ActionPerformed
+
+    private void letter4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_letter4ActionPerformed
+        int i;
+        for (i=0; i<correct.length; i++){
+            if(correct[i]==false){
+                break;
+            }
+        } 
+        if (letter1.getText().equals(Character.toString(lettersUnmixed[i]))){
+            correct[i]=true;
+            System.out.println("corect");
+        }else{
+            correct[i]=false;
+            messages.setText("incorect");
+            System.out.println("incorect");
+        }
+    }//GEN-LAST:event_letter4ActionPerformed
     
     public void setup(){
         String wordsArray[] = {"cars", "cats", "blue"};
@@ -193,10 +285,15 @@ public class gameProjectGUI extends javax.swing.JFrame {
         
         // Implementing Fisher–Yates shuffle
         char[] lettersMixed= shuffleLetters(lettersUnmixed);
+        lettersUnmixed= wordSplit(word);
+        
         for (int i=0; i<lettersMixed.length; i++){
             System.out.println(lettersMixed[i]);
         }
         
+        for (int i=0; i<lettersUnmixed.length; i++){
+            System.out.println(lettersUnmixed[i]);
+        }
         //put mixed letter in display label 
         for (int i=0; i<lettersMixed.length; i++){
             wordMixed.setText(wordMixed.getText() + lettersMixed[i]);
@@ -331,6 +428,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
     private javax.swing.JButton letter3;
     private javax.swing.JButton letter4;
     private javax.swing.JButton letter5;
+    private javax.swing.JLabel messages;
     private javax.swing.JButton start;
     private javax.swing.JPanel startMenu;
     private javax.swing.JLabel wordMixed;
