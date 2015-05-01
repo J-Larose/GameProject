@@ -8,7 +8,8 @@ import java.util.Random;
  */
 
 /**
- *
+ * simple class that contains all the code for the game to function
+ * 
  * @author Jacob Larose
  */
 public class gameProjectGUI extends javax.swing.JFrame {
@@ -19,7 +20,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
     public gameProjectGUI() {
         initComponents();
     }
-    
+    // initialises global variables
     char []lettersUnmixed;
     boolean [] correct;
     
@@ -35,7 +36,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         startMenu = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         start = new javax.swing.JButton();
         difficulty = new javax.swing.JComboBox();
         gameMenu = new javax.swing.JPanel();
@@ -46,12 +47,13 @@ public class gameProjectGUI extends javax.swing.JFrame {
         letter4 = new javax.swing.JButton();
         letter5 = new javax.swing.JButton();
         messages = new javax.swing.JLabel();
+        correctWord = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         startMenu.setBackground(new java.awt.Color(34, 41, 253));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resource/titleLogo.png"))); // NOI18N
+        title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resource/titleLogo.png"))); // NOI18N
 
         start.setForeground(new java.awt.Color(196, 41, 37));
         start.setText("<html> <font size=\"25\">START</font></html>");
@@ -81,14 +83,14 @@ public class gameProjectGUI extends javax.swing.JFrame {
                 .addGap(174, 174, 174))
             .addGroup(startMenuLayout.createSequentialGroup()
                 .addGap(207, 207, 207)
-                .addComponent(jLabel1)
+                .addComponent(title)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         startMenuLayout.setVerticalGroup(
             startMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(startMenuLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel1)
+                .addComponent(title)
                 .addGap(97, 97, 97)
                 .addGroup(startMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,8 +128,17 @@ public class gameProjectGUI extends javax.swing.JFrame {
             }
         });
 
+        letter5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                letter5ActionPerformed(evt);
+            }
+        });
+
         messages.setFont(new java.awt.Font("Tekton Pro", 0, 24)); // NOI18N
         messages.setForeground(new java.awt.Color(255, 51, 51));
+
+        correctWord.setFont(new java.awt.Font("Tekton Pro", 0, 24)); // NOI18N
+        correctWord.setForeground(new java.awt.Color(255, 51, 51));
 
         javax.swing.GroupLayout gameMenuLayout = new javax.swing.GroupLayout(gameMenu);
         gameMenu.setLayout(gameMenuLayout);
@@ -135,33 +146,40 @@ public class gameProjectGUI extends javax.swing.JFrame {
             gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gameMenuLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(wordMixed, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(gameMenuLayout.createSequentialGroup()
-                        .addComponent(letter1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69)
-                        .addComponent(letter2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(letter3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(78, 78, 78)))
-                .addGap(5, 5, 5)
-                .addComponent(letter4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addComponent(letter5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
-            .addGroup(gameMenuLayout.createSequentialGroup()
-                .addGap(326, 326, 326)
-                .addComponent(messages, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(199, 199, 199)
+                        .addComponent(wordMixed, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(letter4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                        .addComponent(letter5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83))
+                    .addGroup(gameMenuLayout.createSequentialGroup()
+                        .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(messages, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(gameMenuLayout.createSequentialGroup()
+                                .addComponent(letter1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(69, 69, 69)
+                                .addComponent(letter2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(gameMenuLayout.createSequentialGroup()
+                                .addGap(81, 81, 81)
+                                .addComponent(letter3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(gameMenuLayout.createSequentialGroup()
+                                .addGap(157, 157, 157)
+                                .addComponent(correctWord, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))))
         );
         gameMenuLayout.setVerticalGroup(
             gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gameMenuLayout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addContainerGap()
                 .addComponent(wordMixed, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(messages, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addGap(70, 70, 70)
+                .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(messages, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                    .addComponent(correctWord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(letter2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,11 +207,20 @@ public class gameProjectGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * does nothing at all in this version
+     * 
+     * @param evt 
+     */
     private void difficultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_difficultyActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_difficultyActionPerformed
-
+    /**
+     * @param evt 
+     * 
+     * sets the first jPanel to invisible and displays the second one, along with making all the letter buttons as invisible as initialization
+     * @see gameProjectGUI#setup() 
+     */
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         startMenu.setVisible(false);
         gameMenu.setVisible(true);
@@ -205,7 +232,15 @@ public class gameProjectGUI extends javax.swing.JFrame {
         letter5.setVisible(false);
         setup();
     }//GEN-LAST:event_startActionPerformed
-
+    /**
+     * @param evt 
+     * 
+     * checks to see if the button is clicked in the right order based off the "correct" array, same operations as:
+     * @see gameProjectGUI#letter2ActionPerformed(java.awt.event.ActionEvent) 
+     * @see gameProjectGUI#letter3ActionPerformed(java.awt.event.ActionEvent) 
+     * @see gameProjectGUI#letter4ActionPerformed(java.awt.event.ActionEvent) 
+     * @see gameProjectGUI#letter5ActionPerformed(java.awt.event.ActionEvent) 
+     */
     private void letter1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_letter1ActionPerformed
         int i;
         for (i=0; i<correct.length; i++){
@@ -213,9 +248,11 @@ public class gameProjectGUI extends javax.swing.JFrame {
                 break;
             }
         }
-        System.out.println(i);
+        
+        System.out.println("letter is" +i);
         if (letter1.getText().equals(Character.toString(lettersUnmixed[i]))){
             correct[i]=true;
+            messages.setText("corect");
             System.out.println("corect");
         }else{
             correct[i]=false;
@@ -223,7 +260,12 @@ public class gameProjectGUI extends javax.swing.JFrame {
             System.out.println("incorect");
         }
     }//GEN-LAST:event_letter1ActionPerformed
-
+    /**
+     * 
+     * @param evt 
+     * 
+     * @see gameProjectGUI#letter1ActionPerformed(java.awt.event.ActionEvent) 
+     */
     private void letter2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_letter2ActionPerformed
         int i;
         for (i = 0; i < correct.length; i++) {
@@ -231,8 +273,11 @@ public class gameProjectGUI extends javax.swing.JFrame {
                 break;
             }
         }
+        
+        System.out.println("letter is" +i);
         if (letter2.getText().equals(Character.toString(lettersUnmixed[i]))) {
             correct[i] = true;
+            messages.setText("corect");
             System.out.println("corect");
         } else {
             correct[i] = false;
@@ -240,7 +285,12 @@ public class gameProjectGUI extends javax.swing.JFrame {
             System.out.println("incorect");
         }
     }//GEN-LAST:event_letter2ActionPerformed
-
+    /**
+     * 
+     * @param evt 
+     * 
+     * @see gameProjectGUI#letter1ActionPerformed(java.awt.event.ActionEvent) 
+     */
     private void letter3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_letter3ActionPerformed
         int i;
         for (i=0; i<correct.length; i++){
@@ -248,8 +298,11 @@ public class gameProjectGUI extends javax.swing.JFrame {
                 break;
             }
         } 
+        
+        System.out.println("letter is" +i);
         if (letter3.getText().equals(Character.toString(lettersUnmixed[i]))){
             correct[i]=true;
+            messages.setText("corect");
             System.out.println("corect");
         }else{
             correct[i]=false;
@@ -257,7 +310,12 @@ public class gameProjectGUI extends javax.swing.JFrame {
             System.out.println("incorect");
         }
     }//GEN-LAST:event_letter3ActionPerformed
-
+    /**
+     * 
+     * @param evt 
+     * 
+     * @see gameProjectGUI#letter1ActionPerformed(java.awt.event.ActionEvent) 
+     */
     private void letter4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_letter4ActionPerformed
         int i;
         for (i=0; i<correct.length; i++){
@@ -265,8 +323,11 @@ public class gameProjectGUI extends javax.swing.JFrame {
                 break;
             }
         } 
-        if (letter1.getText().equals(Character.toString(lettersUnmixed[i]))){
+        
+        System.out.println("letter is" +i);
+        if (letter4.getText().equals(Character.toString(lettersUnmixed[i]))){
             correct[i]=true;
+            messages.setText("corect");
             System.out.println("corect");
         }else{
             correct[i]=false;
@@ -274,8 +335,42 @@ public class gameProjectGUI extends javax.swing.JFrame {
             System.out.println("incorect");
         }
     }//GEN-LAST:event_letter4ActionPerformed
-    
+    /**
+     * 
+     * @param evt 
+     * 
+     * @see gameProjectGUI#letter1ActionPerformed(java.awt.event.ActionEvent) 
+     */
+    private void letter5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_letter5ActionPerformed
+        int i;
+        for (i=0; i<correct.length; i++){
+            if(correct[i]==false){
+                break;
+            }
+        } 
+        
+        System.out.println("letter is" +i);
+        if (letter5.getText().equals(Character.toString(lettersUnmixed[i]))){
+            correct[i]=true;
+            messages.setText("corect");
+            System.out.println("corect");
+        }else{
+            correct[i]=false;
+            messages.setText("incorect");
+            System.out.println("incorect");
+        }
+    }//GEN-LAST:event_letter5ActionPerformed
+    /**
+     * initializes all local variables
+     * calls on
+     * @see gameProjectGUI#wordSplit(java.lang.String) 
+     * @see gameProjectGUI#shuffleLetters(char[]) 
+     * 
+     * initializes buttons
+     * initializes correct array
+     */
     public void setup(){
+        //initialise variables
         String wordsArray[] = {"cars", "cats", "blue"};
         int choice = -1;
         choice = wordChoose(choice);
@@ -287,18 +382,20 @@ public class gameProjectGUI extends javax.swing.JFrame {
         char[] lettersMixed= shuffleLetters(lettersUnmixed);
         lettersUnmixed= wordSplit(word);
         
+        //output letters to console
         for (int i=0; i<lettersMixed.length; i++){
             System.out.println(lettersMixed[i]);
         }
-        
         for (int i=0; i<lettersUnmixed.length; i++){
             System.out.println(lettersUnmixed[i]);
         }
+        
         //put mixed letter in display label 
         for (int i=0; i<lettersMixed.length; i++){
             wordMixed.setText(wordMixed.getText() + lettersMixed[i]);
         }
         
+        //decide which buttons to show and labels them
         System.out.println(lettersMixed.length);
         switch (lettersMixed.length){
             case 3:
@@ -337,9 +434,8 @@ public class gameProjectGUI extends javax.swing.JFrame {
                 System.out.print("error");
                 break;
         }
-        /**
-         * set all letters to incorect for initial
-         */
+        
+        // set all letters to incorect initially
         correct= new boolean[lettersMixed.length];
         for (int i=0; i<lettersMixed.length; i++){
             correct[i]=false;
@@ -350,6 +446,8 @@ public class gameProjectGUI extends javax.swing.JFrame {
      * 
      * @param choice
      * @return 
+     * 
+     * random generation of int to use as index value for selection of a word from the array
      */
     public static int wordChoose(int choice){
         choice = (int) ((Math.random() * 3));
@@ -360,6 +458,8 @@ public class gameProjectGUI extends javax.swing.JFrame {
      * 
      * @param word
      * @return 
+     * 
+     * uses [string].toCharArray(); to convert selected word to charecters for shuffling
      */
     public static char[] wordSplit(String word ){
         char[] lettersUnmixed= word.toCharArray();
@@ -370,6 +470,8 @@ public class gameProjectGUI extends javax.swing.JFrame {
      * 
      * @param lettersUnmixed
      * @return 
+     * 
+     * implements Fisher-Yates shuffle to mix the chars in the array
      */
     static char[] shuffleLetters(char[] lettersUnmixed) {
         Random rnd = new Random();
@@ -420,9 +522,9 @@ public class gameProjectGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel correctWord;
     private javax.swing.JComboBox difficulty;
     private javax.swing.JPanel gameMenu;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton letter1;
     private javax.swing.JButton letter2;
     private javax.swing.JButton letter3;
@@ -431,6 +533,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
     private javax.swing.JLabel messages;
     private javax.swing.JButton start;
     private javax.swing.JPanel startMenu;
+    private javax.swing.JLabel title;
     private javax.swing.JLabel wordMixed;
     // End of variables declaration//GEN-END:variables
 }
