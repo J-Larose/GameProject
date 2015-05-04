@@ -20,6 +20,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
     public gameProjectGUI() {
         initComponents();
     }
+    
     // initialises global variables
     char []lettersUnmixed;
     boolean [] correct;
@@ -48,6 +49,9 @@ public class gameProjectGUI extends javax.swing.JFrame {
         letter5 = new javax.swing.JButton();
         messages = new javax.swing.JLabel();
         correctWord = new javax.swing.JLabel();
+        finalMenu = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        playAgain = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,7 +99,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
                 .addGroup(startMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(difficulty, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
         gameMenu.setVisible(false);
@@ -190,6 +194,45 @@ public class gameProjectGUI extends javax.swing.JFrame {
                 .addGap(125, 125, 125))
         );
 
+        finalMenu.setBackground(new java.awt.Color(33, 97, 253));
+        finalMenu.setVisible(false);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setText("You WIN");
+
+        playAgain.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        playAgain.setForeground(new java.awt.Color(255, 51, 51));
+        playAgain.setText("Play Again");
+        playAgain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playAgainActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout finalMenuLayout = new javax.swing.GroupLayout(finalMenu);
+        finalMenu.setLayout(finalMenuLayout);
+        finalMenuLayout.setHorizontalGroup(
+            finalMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, finalMenuLayout.createSequentialGroup()
+                .addContainerGap(261, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(255, 255, 255))
+            .addGroup(finalMenuLayout.createSequentialGroup()
+                .addGap(301, 301, 301)
+                .addComponent(playAgain, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        finalMenuLayout.setVerticalGroup(
+            finalMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(finalMenuLayout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98)
+                .addComponent(playAgain, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(215, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -197,12 +240,16 @@ public class gameProjectGUI extends javax.swing.JFrame {
             .addComponent(startMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(gameMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(finalMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(startMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(gameMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(finalMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -259,6 +306,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
             messages.setText("incorect");
             System.out.println("incorect");
         }
+        checkDone();
     }//GEN-LAST:event_letter1ActionPerformed
     /**
      * 
@@ -284,6 +332,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
             messages.setText("incorect");
             System.out.println("incorect");
         }
+        checkDone();
     }//GEN-LAST:event_letter2ActionPerformed
     /**
      * 
@@ -309,6 +358,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
             messages.setText("incorect");
             System.out.println("incorect");
         }
+        checkDone();
     }//GEN-LAST:event_letter3ActionPerformed
     /**
      * 
@@ -334,6 +384,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
             messages.setText("incorect");
             System.out.println("incorect");
         }
+        checkDone();
     }//GEN-LAST:event_letter4ActionPerformed
     /**
      * 
@@ -359,7 +410,28 @@ public class gameProjectGUI extends javax.swing.JFrame {
             messages.setText("incorect");
             System.out.println("incorect");
         }
+        checkDone();
     }//GEN-LAST:event_letter5ActionPerformed
+
+    private void playAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playAgainActionPerformed
+        finalMenu.setVisible(false);
+        startMenu.setVisible(true);
+    }//GEN-LAST:event_playAgainActionPerformed
+    /**
+     * checks if the button pushed is the last one in the word
+     */
+    public void checkDone(){
+        boolean done=true;
+        for (int i=0; i<correct.length; i++){
+            if (correct[i]!=true){
+                done=false;
+            }
+        }
+        if (done==true){
+            gameMenu.setVisible(false);
+            finalMenu.setVisible(true);
+        } 
+    }
     /**
      * initializes all local variables
      * calls on
@@ -377,6 +449,8 @@ public class gameProjectGUI extends javax.swing.JFrame {
         String word=wordsArray[choice];
         System.out.println(word);
         lettersUnmixed= wordSplit(word);
+        wordMixed.setText("");
+        messages.setText("");
         
         // Implementing Fisher–Yates shuffle
         char[] lettersMixed= shuffleLetters(lettersUnmixed);
@@ -524,13 +598,16 @@ public class gameProjectGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel correctWord;
     private javax.swing.JComboBox difficulty;
+    private javax.swing.JPanel finalMenu;
     private javax.swing.JPanel gameMenu;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton letter1;
     private javax.swing.JButton letter2;
     private javax.swing.JButton letter3;
     private javax.swing.JButton letter4;
     private javax.swing.JButton letter5;
     private javax.swing.JLabel messages;
+    private javax.swing.JButton playAgain;
     private javax.swing.JButton start;
     private javax.swing.JPanel startMenu;
     private javax.swing.JLabel title;
