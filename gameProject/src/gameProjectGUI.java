@@ -443,7 +443,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
      */
     public void setup(){
         //initialise variables
-        String wordsArray[] = {"cars", "cats", "blue"};
+        String wordsArray[] = {"quack", "jumbo", "booze", "milk", "brush", "clean", "grave", "food", "drink", "crack", "music", "break","wake","cake", "near", "meet", "meat","fame", "type", "loan"};
         int choice = -1;
         choice = wordChoose(choice);
         String word=wordsArray[choice];
