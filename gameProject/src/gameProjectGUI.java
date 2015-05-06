@@ -40,6 +40,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
         title = new javax.swing.JLabel();
         start = new javax.swing.JButton();
         difficulty = new javax.swing.JComboBox();
+        Quit = new javax.swing.JButton();
         gameMenu = new javax.swing.JPanel();
         wordMixed = new javax.swing.JLabel();
         letter1 = new javax.swing.JButton();
@@ -49,6 +50,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
         letter5 = new javax.swing.JButton();
         messages = new javax.swing.JLabel();
         correctWord = new javax.swing.JLabel();
+        LettersGot = new javax.swing.JLabel();
         finalMenu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         playAgain = new javax.swing.JButton();
@@ -75,6 +77,13 @@ public class gameProjectGUI extends javax.swing.JFrame {
             }
         });
 
+        Quit.setLabel("Quit");
+        Quit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                QuitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout startMenuLayout = new javax.swing.GroupLayout(startMenu);
         startMenu.setLayout(startMenuLayout);
         startMenuLayout.setHorizontalGroup(
@@ -86,8 +95,13 @@ public class gameProjectGUI extends javax.swing.JFrame {
                 .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(174, 174, 174))
             .addGroup(startMenuLayout.createSequentialGroup()
-                .addGap(207, 207, 207)
-                .addComponent(title)
+                .addGroup(startMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(startMenuLayout.createSequentialGroup()
+                        .addGap(207, 207, 207)
+                        .addComponent(title))
+                    .addGroup(startMenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Quit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         startMenuLayout.setVerticalGroup(
@@ -99,7 +113,9 @@ public class gameProjectGUI extends javax.swing.JFrame {
                 .addGroup(startMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(difficulty, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addComponent(Quit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         gameMenu.setVisible(false);
@@ -144,6 +160,9 @@ public class gameProjectGUI extends javax.swing.JFrame {
         correctWord.setFont(new java.awt.Font("Tekton Pro", 0, 24)); // NOI18N
         correctWord.setForeground(new java.awt.Color(255, 51, 51));
 
+        LettersGot.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        LettersGot.setForeground(new java.awt.Color(255, 51, 51));
+
         javax.swing.GroupLayout gameMenuLayout = new javax.swing.GroupLayout(gameMenu);
         gameMenu.setLayout(gameMenuLayout);
         gameMenuLayout.setHorizontalGroup(
@@ -166,12 +185,12 @@ public class gameProjectGUI extends javax.swing.JFrame {
                                 .addComponent(letter1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(69, 69, 69)
                                 .addComponent(letter2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(141, 141, 141)
+                        .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(letter3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(gameMenuLayout.createSequentialGroup()
-                                .addGap(81, 81, 81)
-                                .addComponent(letter3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(gameMenuLayout.createSequentialGroup()
-                                .addGap(157, 157, 157)
+                                .addComponent(LettersGot, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(correctWord, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))))
         );
         gameMenuLayout.setVerticalGroup(
@@ -180,10 +199,12 @@ public class gameProjectGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(wordMixed, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70)
-                .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(messages, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-                    .addComponent(correctWord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(messages, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                        .addComponent(correctWord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(LettersGot, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(letter2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,6 +320,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
         System.out.println("letter is" +i);
         if (letter1.getText().equals(Character.toString(lettersUnmixed[i]))){
             correct[i]=true;
+            LettersGot.setText(LettersGot.getText()+lettersUnmixed[i]);
             messages.setText("corect");
             System.out.println("corect");
         }else{
@@ -325,6 +347,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
         System.out.println("letter is" +i);
         if (letter2.getText().equals(Character.toString(lettersUnmixed[i]))) {
             correct[i] = true;
+            LettersGot.setText(LettersGot.getText()+lettersUnmixed[i]);
             messages.setText("corect");
             System.out.println("corect");
         } else {
@@ -351,6 +374,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
         System.out.println("letter is" +i);
         if (letter3.getText().equals(Character.toString(lettersUnmixed[i]))){
             correct[i]=true;
+            LettersGot.setText(LettersGot.getText()+lettersUnmixed[i]);
             messages.setText("corect");
             System.out.println("corect");
         }else{
@@ -377,6 +401,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
         System.out.println("letter is" +i);
         if (letter4.getText().equals(Character.toString(lettersUnmixed[i]))){
             correct[i]=true;
+            LettersGot.setText(LettersGot.getText()+lettersUnmixed[i]);
             messages.setText("corect");
             System.out.println("corect");
         }else{
@@ -403,6 +428,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
         System.out.println("letter is" +i);
         if (letter5.getText().equals(Character.toString(lettersUnmixed[i]))){
             correct[i]=true;
+            LettersGot.setText(LettersGot.getText()+lettersUnmixed[i]);
             messages.setText("corect");
             System.out.println("corect");
         }else{
@@ -417,6 +443,10 @@ public class gameProjectGUI extends javax.swing.JFrame {
         finalMenu.setVisible(false);
         startMenu.setVisible(true);
     }//GEN-LAST:event_playAgainActionPerformed
+
+    private void QuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitActionPerformed
+       System.exit(0);// TODO add your handling code here:
+    }//GEN-LAST:event_QuitActionPerformed
     /**
      * checks if the button pushed is the last one in the word
      */
@@ -451,6 +481,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
         lettersUnmixed= wordSplit(word);
         wordMixed.setText("");
         messages.setText("");
+        LettersGot.setText("");
         
         // Implementing Fisher–Yates shuffle
         char[] lettersMixed= shuffleLetters(lettersUnmixed);
@@ -596,6 +627,8 @@ public class gameProjectGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LettersGot;
+    private javax.swing.JButton Quit;
     private javax.swing.JLabel correctWord;
     private javax.swing.JComboBox difficulty;
     private javax.swing.JPanel finalMenu;
