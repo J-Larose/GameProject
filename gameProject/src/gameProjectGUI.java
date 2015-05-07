@@ -57,7 +57,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        startMenu.setBackground(new java.awt.Color(153, 0, 153));
+        startMenu.setBackground(new java.awt.Color(0, 0, 102));
 
         title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resource/titleLogo.png"))); // NOI18N
 
@@ -119,7 +119,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
         );
 
         gameMenu.setVisible(false);
-        gameMenu.setBackground(new java.awt.Color(153, 0, 153));
+        gameMenu.setBackground(new java.awt.Color(0, 0, 102));
 
         wordMixed.setFont(new java.awt.Font("Tekton Pro", 0, 48)); // NOI18N
         wordMixed.setForeground(new java.awt.Color(255, 51, 51));
@@ -183,8 +183,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
                                 .addGap(86, 86, 86)
                                 .addComponent(letter2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(87, 87, 87)
-                                .addComponent(letter4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addComponent(letter4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(gameMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gameMenuLayout.createSequentialGroup()
                                 .addComponent(LettersGot, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -218,7 +217,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
                 .addGap(125, 125, 125))
         );
 
-        finalMenu.setBackground(new java.awt.Color(153, 0, 153));
+        finalMenu.setBackground(new java.awt.Color(0, 0, 102));
         finalMenu.setVisible(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
@@ -324,12 +323,12 @@ public class gameProjectGUI extends javax.swing.JFrame {
         if (letter1.getText().equals(Character.toString(lettersUnmixed[i]))){
             correct[i]=true;
             LettersGot.setText(LettersGot.getText()+lettersUnmixed[i]);
-            messages.setText("corect");
-            System.out.println("corect");
+            messages.setText("correct");
+            System.out.println("correct");
         }else{
             correct[i]=false;
-            messages.setText("incorect");
-            System.out.println("incorect");
+            messages.setText("incorrect");
+            System.out.println("incorrect");
         }
         checkDone();
     }//GEN-LAST:event_letter1ActionPerformed
@@ -351,12 +350,12 @@ public class gameProjectGUI extends javax.swing.JFrame {
         if (letter2.getText().equals(Character.toString(lettersUnmixed[i]))) {
             correct[i] = true;
             LettersGot.setText(LettersGot.getText()+lettersUnmixed[i]);
-            messages.setText("corect");
-            System.out.println("corect");
+            messages.setText("correct");
+            System.out.println("correct");
         } else {
             correct[i] = false;
-            messages.setText("incorect");
-            System.out.println("incorect");
+            messages.setText("incorrect");
+            System.out.println("incorrect");
         }
         checkDone();
     }//GEN-LAST:event_letter2ActionPerformed
@@ -378,12 +377,12 @@ public class gameProjectGUI extends javax.swing.JFrame {
         if (letter3.getText().equals(Character.toString(lettersUnmixed[i]))){
             correct[i]=true;
             LettersGot.setText(LettersGot.getText()+lettersUnmixed[i]);
-            messages.setText("corect");
-            System.out.println("corect");
+            messages.setText("correct");
+            System.out.println("correct");
         }else{
             correct[i]=false;
-            messages.setText("incorect");
-            System.out.println("incorect");
+            messages.setText("incorrect");
+            System.out.println("incorrect");
         }
         checkDone();
     }//GEN-LAST:event_letter3ActionPerformed
@@ -405,12 +404,12 @@ public class gameProjectGUI extends javax.swing.JFrame {
         if (letter4.getText().equals(Character.toString(lettersUnmixed[i]))){
             correct[i]=true;
             LettersGot.setText(LettersGot.getText()+lettersUnmixed[i]);
-            messages.setText("corect");
-            System.out.println("corect");
+            messages.setText("correct");
+            System.out.println("correct");
         }else{
             correct[i]=false;
-            messages.setText("incorect");
-            System.out.println("incorect");
+            messages.setText("incorrect");
+            System.out.println("incorrect");
         }
         checkDone();
     }//GEN-LAST:event_letter4ActionPerformed
@@ -432,12 +431,12 @@ public class gameProjectGUI extends javax.swing.JFrame {
         if (letter5.getText().equals(Character.toString(lettersUnmixed[i]))){
             correct[i]=true;
             LettersGot.setText(LettersGot.getText()+lettersUnmixed[i]);
-            messages.setText("corect");
-            System.out.println("corect");
+            messages.setText("correct");
+            System.out.println("correct");
         }else{
             correct[i]=false;
-            messages.setText("incorect");
-            System.out.println("incorect");
+            messages.setText("incorrect");
+            System.out.println("incorrect");
         }
         checkDone();
     }//GEN-LAST:event_letter5ActionPerformed
@@ -544,7 +543,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
                 break;
         }
         
-        // set all letters to incorect initially
+        // set all letters to incorrect initially
         correct= new boolean[lettersMixed.length];
         for (int i=0; i<lettersMixed.length; i++){
             correct[i]=false;
@@ -559,7 +558,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
      * random generation of int to use as index value for selection of a word from the array
      */
     public static int wordChoose(int choice){
-        choice = (int) ((Math.random() * 3));
+        choice = (int) ((Math.random() * 20));
         return choice;
     }
     
