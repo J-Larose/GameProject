@@ -57,7 +57,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        startMenu.setBackground(new java.awt.Color(34, 41, 253));
+        startMenu.setBackground(new java.awt.Color(153, 0, 153));
 
         title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resource/titleLogo.png"))); // NOI18N
 
@@ -119,7 +119,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
         );
 
         gameMenu.setVisible(false);
-        gameMenu.setBackground(new java.awt.Color(33, 97, 253));
+        gameMenu.setBackground(new java.awt.Color(153, 0, 153));
 
         wordMixed.setFont(new java.awt.Font("Tekton Pro", 0, 48)); // NOI18N
         wordMixed.setForeground(new java.awt.Color(255, 51, 51));
@@ -215,7 +215,7 @@ public class gameProjectGUI extends javax.swing.JFrame {
                 .addGap(125, 125, 125))
         );
 
-        finalMenu.setBackground(new java.awt.Color(33, 97, 253));
+        finalMenu.setBackground(new java.awt.Color(153, 0, 153));
         finalMenu.setVisible(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
